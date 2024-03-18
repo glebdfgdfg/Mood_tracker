@@ -1,0 +1,20 @@
+|EN|RU|UK
+login_menu|Login;Register;Language|Войти;Зарегистрироваться;Язык|Увійти;Зареєструватися;Мова
+login_menu_text|Switch between the up and down arrows. Use the 'Enter' key to select. To exit the program, press the 'q' key.|Переключайтесь с помощью стрелок вверх и вниз. Для выбора используйте клавишу 'Enter'. Для выхода из программы нажмите клавишу 'q'|Перемикайтеся за допомогою стрілок вгору та вниз. Щоб вибрати, використовуйте клавішу 'Enter'. Для виходу з програми, натискайте клавішу 'q'
+language_menu|English;Русский;Український|English;Русский;Український|English;Русский;Український
+language_menu_text|Choose language|Выберите язык|Виберіть мову
+main_menu|Make a record;Analysis;Language;Exit|Сделать запись;Анализ;Язык;Выход|Зробити запис;Аналіз;Мова;Вихід
+main_menu_text|Welcome, USERNAME! This program will help you track your spiritual state. To end the program, press the 'q' key.|Добро пожаловать, USERNAME! Данная программа поможет вам отслеживать свое духовное состояние. Чтобы завершить программу, нажмите клавишу «q».|Ласкаво просимо, USERNAME! Ця програма допоможе відстежити ваш духовний стан. Щоб завершити програму, натисніть клавішу 'q'.
+choice_assessment_menu|Wonderful;Good;Okay;So-so;Bad|Замечательно;Хорошо;Нормально;Пойдет;Плохо|Чудово;Добре;Нормально;Так собі;Поганоe
+enter_name|Enter your name: |Введите имя: |Введіть ім'я: |
+enter_pass|Enter password: |Введите пароль: |Введіть пароль:
+enter_pass_again|Enter password again: |Введите пароль повторно: |Введіть пароль ще раз:
+bad_pass|Passwords do not match. Try again.|Пароли не совпадают. Попробуйте еще раз.|Паролі не співпадають. Спробуйте ще раз.
+good_reg|User successfully registered.|Пользователь успешно зарегистрирован.|Користувач успішно зареєстрований.
+bad_reg|Such user already exists! Press Enter to continue.|Такой пользователь уже есть! Нажмите Enter чтобы продолжить.|Такий користувач вже існує! Натисніть Enter, щоб продовжити.
+bad_login|The entered username or password is incorrect. Press Enter to continue. |Введенный логин или пароль неверны. Нажмите Enter, чтобы продолжить.|Введений логін або пароль неправильний. Натисніть Enter, щоб продовжити.
+welcome_user|Hello, USERNAME! |Привет, USERNAME!|Привіт, USERNAME!
+bad_add_note|You've already made a record today. Press Enter to continue. |Вы уже делали запись сегодня. Нажмите Enter, чтобы продолжить.|Сьогодні ви вже робили запис. Натисніть Enter, щоб продовжити.
+print_chart|Chart: ;Excellent:;Good:;Okay:;Fair:;Poor:;Missed:; |График: ;Отлично:;Хорошо:;Нормально:;Сойдет:;Плохо:;Пропущено:;|Графік: ;Чудово:;Добре:;Нормально:;Піде:;Погано:;Пропущено:;
+weekdays|Mon;Tue;Wed;Thu;Fri;Sat;Sun|Пн;Вт;Ср;Чт;Пт;Сб;Вс|Пн;Вт;Ср;Чт;Пт;Сб;Нд
+assessment|Bad;So-so;Okay;Good;Wonderful|Плохо;Пойдет;Нормально;Хорошо;Замечательно|Поганоe;Так собі;Нормально;Добре;Чудово
