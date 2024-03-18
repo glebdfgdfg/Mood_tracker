@@ -13,7 +13,6 @@ class Menu:
         self._title = title
         self._numbering = numbering
         self._clear_console = clear_console
-
         self._delay = 0.1
 
     def _print(self, cursor_menu) -> None:

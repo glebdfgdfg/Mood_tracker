@@ -14,15 +14,12 @@ class Session:
     def __init__(self):
         self._path_session = Path(os.getcwd(), 'data', 'session.json')
         self._path_users_table = Path(os.getcwd(), 'data', 'users.csv')
-        self.logged = False
         self.logged_in_user = None
         self.last_logout_time = None
         self.file_token = None
         self.locale = 'EN'
 
     def register_user(self) -> bool:
-        users_path = Path(os.getcwd(), 'data', 'users.csv')
-
         name = input(language(self.locale, 'enter_name'))
 
         while True:
@@ -37,7 +34,7 @@ class Session:
                 os.system('cls')
                 print(language(self.locale, 'bad_pass'))
 
-        users = csv.read(Path(os.getcwd(), 'data', 'users.csv'))
+        users = csv.read(self._path_users_table)
 
         temp_users = []
         for user in users:
@@ -48,7 +45,7 @@ class Session:
             users.append([name, pass_token])
             user_table_path = Path(os.getcwd(), 'data', 'tables', f'{self.file_token}.csv')
 
-            csv.write(users, users_path)
+            csv.write(users, self._path_users_table)
             csv.write([['datetime', 'mood_assessment']], user_table_path)
             print(language(self.locale, 'good_reg'))
             return True
@@ -74,7 +71,6 @@ class Session:
         return False
 
     def logout(self) -> None:
-        self.logged = False
         self.logged_in_user = None
         self.last_logout_time = None
         self.file_token = None
@@ -108,8 +104,7 @@ class Session:
                 data = json.load(f)
                 if data['logged_in_user'] and data['last_logout_time']:
                     self.logged_in_user = data['logged_in_user']
-                    if data['last_logout_time']:
-                        self.last_logout_time = datetime.fromisoformat(data['last_logout_time'])
+                    self.last_logout_time = datetime.fromisoformat(data['last_logout_time'])
                     self.locale = data['locale']
 
                     print(language(self.locale, 'welcome_user').replace('USERNAME', self.logged_in_user))
@@ -125,6 +120,10 @@ class Session:
                                 return True
 
                         print(language(self.locale, 'bad_pass'))
+                else:
+                    return False
+        else:
+            return False
 
     def set_locale(self, locale) -> None:
         self.locale = locale
