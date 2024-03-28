@@ -6,10 +6,16 @@ from pathlib import Path
 
 def read(file_path) -> list:
     data = []
-    with open(file_path, 'r') as file:
-        for line in file:
-            data.append(line.strip().split('|'))
-    return data
+    if os.path.exists(file_path):
+        with open(file_path, 'r') as file:
+            for line in file:
+                data.append(line.strip().split('|'))
+        return data
+
+    else:
+        with open(file_path, 'w') as file:
+            file.write('')
+        return []
 
 
 def write(data, file_path) -> None:
