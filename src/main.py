@@ -7,10 +7,9 @@ from src.session import Session
 
 def main():
     session = Session()
-    session.restore_user()  # Восстановить пользователя из предыдущей сессии, если есть
+    session.restore_user()
 
     while True:
-        # Проверяем, вошел ли пользователь
         if not session.is_logged_in():
 
             match menu.login_menu(session):
@@ -30,7 +29,7 @@ def main():
                             session.set_locale('UK')
                 case -1:
                     print('by!')
-                    session.save_session()  # Сохраняем информацию о пользователе при выходе
+                    session.save_session()
                     exit()
 
         else:
@@ -50,7 +49,7 @@ def main():
                             handlers.add_note(session, 1)
                         case -1:
                             print('by!')
-                            session.save_session()  # Сохраняем информацию о пользователе при выходе
+                            session.save_session()
                             exit()
                 case 2:
                     handlers.analysis(session)
@@ -64,8 +63,8 @@ def main():
                             session.set_locale('UK')
                 case 4:
                     print('by!')
-                    session.logout()  # Пользователь выходит из сессии
+                    session.logout()
                 case -1:
                     print('by!')
-                    session.save_session()  # Сохраняем информацию о пользователе при выходе
+                    session.save_session()
                     exit()

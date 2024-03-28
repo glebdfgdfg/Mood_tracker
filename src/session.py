@@ -1,4 +1,3 @@
-
 import os
 import json
 import getpass
@@ -24,8 +23,12 @@ class Session:
 
         while True:
             name_hash = hasher.username_hash(name)
-            pass_token1 = hasher.password_hash(getpass.getpass(language(self.locale, 'enter_pass')))
-            pass_token2 = hasher.password_hash(getpass.getpass(language(self.locale, 'enter_pass_again')))
+            pass_token1 = hasher.password_hash(
+                getpass.getpass(language(self.locale, 'enter_pass'))
+            )
+            pass_token2 = hasher.password_hash(
+                getpass.getpass(language(self.locale, 'enter_pass_again'))
+            )
             if pass_token1 == pass_token2:
                 pass_token = pass_token1
                 self.file_token = hasher.file_token(name_hash, pass_token)
@@ -43,7 +46,9 @@ class Session:
         if name not in temp_users:
             self.logged_in_user = name
             users.append([name, pass_token])
-            user_table_path = Path(os.getcwd(), 'data', 'tables', f'{self.file_token}.csv')
+            user_table_path = Path(
+                os.getcwd(), 'data', 'tables', f'{self.file_token}.csv'
+            )
 
             csv.write(users, self._path_users_table)
             csv.write([['datetime', 'mood_assessment']], user_table_path)
@@ -57,7 +62,9 @@ class Session:
         name = input(language(self.locale, 'enter_name'))
 
         name_token = hasher.username_hash(name)
-        pass_token = hasher.password_hash(getpass.getpass(language(self.locale, 'enter_pass')))
+        pass_token = hasher.password_hash(
+            getpass.getpass(language(self.locale, 'enter_pass'))
+        )
 
         users = csv.read(self._path_users_table)
 
@@ -100,23 +107,34 @@ class Session:
 
     def restore_user(self) -> bool:
         if os.path.exists(self._path_session):
-            with open(self._path_session, "r") as f:
+            with (open(self._path_session, "r") as f):
                 data = json.load(f)
                 if data['logged_in_user'] and data['last_logout_time']:
                     self.logged_in_user = data['logged_in_user']
-                    self.last_logout_time = datetime.fromisoformat(data['last_logout_time'])
+                    self.last_logout_time = datetime.fromisoformat(
+                        data['last_logout_time']
+                    )
                     self.locale = data['locale']
 
-                    print(language(self.locale, 'welcome_user').replace('USERNAME', self.logged_in_user))
+                    print(language(
+                        self.locale,
+                        'welcome_user').replace('USERNAME', self.logged_in_user)
+                    )
 
                     while True:
                         name_hash = hasher.username_hash(self.logged_in_user)
-                        pass_token = hasher.password_hash(getpass.getpass(language(self.locale, 'enter_pass')))
+                        pass_token = hasher.password_hash(
+                            getpass.getpass(language(self.locale, 'enter_pass'))
+                        )
                         users = csv.read(self._path_users_table)
 
                         for user in users:
-                            if user[0] == self.logged_in_user and user[1] == pass_token:
-                                self.file_token = hasher.file_token(name_hash, pass_token)
+                            if user[0] == self.logged_in_user and \
+                                    user[1] == pass_token:
+                                self.file_token = hasher.file_token(
+                                    name_hash,
+                                    pass_token
+                                )
                                 return True
 
                         print(language(self.locale, 'bad_pass'))

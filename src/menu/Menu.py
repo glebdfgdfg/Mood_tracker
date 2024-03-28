@@ -6,7 +6,15 @@ import keyboard
 
 class Menu:
 
-    def __init__(self, menu_list: list, title='', cursor='> ', delimiter='.', numbering=True, clear_console=True):
+    def __init__(
+            self,
+            menu_list: list,
+            title='',
+            cursor='> ',
+            delimiter='.',
+            numbering=True,
+            clear_console=True
+    ):
         self._menu_list = menu_list
         self._cursor = cursor
         self._delimiter = delimiter

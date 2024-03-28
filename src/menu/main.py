@@ -20,7 +20,11 @@ def login_menu(session: object) -> int:
 
 
 def main_menu(session: object) -> int:
-    text = language(session.locale, 'main_menu_text').replace('USERNAME', session.logged_in_user)
+    text = language(
+        session.locale,
+        'main_menu_text'
+    ).replace('USERNAME', session.logged_in_user)
+
     cursor = Menu(
         menu_list=language(session.locale, 'main_menu'),
         title=text

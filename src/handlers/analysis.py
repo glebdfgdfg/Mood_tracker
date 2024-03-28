@@ -9,7 +9,6 @@ from src.utils import csv
 from src.utils.csv import language
 
 
-# Возвращает список дат текущей недели
 def get_week() -> list:
     this_week = []
     dt = datetime.today()
@@ -22,11 +21,10 @@ def get_week() -> list:
     return this_week
 
 
-# Печатает таблицу
 def create_grade_table(session: object, grades: list) -> None:
     weekdays = language(session.locale, 'weekdays')
-    print(f"{'':^15}|{weekdays[0]:^5}|{weekdays[1]:^5}|{weekdays[2]:^5}|{weekdays[3]:^5}|{weekdays[4]:^5}|{weekdays[5]:^5}|{weekdays[6]:^5}|")
-    print(f"{'-' * 15}|{'-' * 5}|{'-' * 5}|{'-' * 5}|{'-' * 5}|{'-' * 5}|{'-' * 5}|{'-' * 5}|")
+    print(f"{'':^15}│{weekdays[0]:^5}│{weekdays[1]:^5}│{weekdays[2]:^5}│{weekdays[3]:^5}│{weekdays[4]:^5}│{weekdays[5]:^5}│{weekdays[6]:^5}│")
+    print(f"{'─' * 15}┼{'─' * 5}┼{'─' * 5}┼{'─' * 5}┼{'─' * 5}┼{'─' * 5}┼{'─' * 5}┼{'─' * 5}┤")
 
     grade_categories = language(session.locale, 'assessment')
 
@@ -52,14 +50,13 @@ def create_grade_table(session: object, grades: list) -> None:
 
         for cell in row:
             if cell == ' ':
-                row_str += f"{' ':^5}|"
+                row_str += f"{' ':^5}│"
             else:
-                row_str += f"{cell:^14}|"
+                row_str += f"{cell:^14}│"
 
-        print(f"{category:<15}|{row_str}")
+        print(f"{category:<15}│{row_str}")
 
 
-# Основная функция которая генерирует список оценок текущей недели
 def analysis(session: object) -> None:
     os.system('cls')
     init(autoreset=True)
@@ -83,7 +80,6 @@ def analysis(session: object) -> None:
         if not found:
             mood_table.append(0)
 
-    # Цвета индикаторов
     wonderful = Back.GREEN + " " * mood_table.count(5) * factor + Style.RESET_ALL
     good = Back.BLUE + " " * mood_table.count(4) * factor + Style.RESET_ALL
     okay = Back.CYAN + " " * mood_table.count(3) * factor + Style.RESET_ALL
@@ -93,7 +89,6 @@ def analysis(session: object) -> None:
 
     chatrs = language(session.locale, 'print_chart')
 
-    # Вывод индикаторов
     print(f'{chatrs[0]}{wonderful}{good}{okay}{will_do}{bad}{skip}\n')
 
     print(f'{chatrs[1]:<15}{wonderful:<15}')
